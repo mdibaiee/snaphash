@@ -8,13 +8,13 @@
     }
 
     // selector provided
-    if (typeof els === 'string') {
+    else if (typeof els === 'string') {
       els = document.querySelectorAll(els);
     }
 
-    // single element provided
-    if (typeof els.length === 'undefined') {
-      els = [els];
+    // single element provided (only image element)
+    else if (!els instanceof HTMLImageElement) {
+      throw TypeError("Can not apply Snaphash to " + els.constructor.name + " type. You must provide an image element/selector");
     }
 
     // loop over elements
