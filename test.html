@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+
+  <style>
+    video, img, input {
+      display: block;
+      margin: 2rem auto;
+
+    }
+  </style>
+</head>
+<body>
+  <video id="myvideo" controls src="test.mp4"></video>
+  <input type='range' min='0' step='1'>
+  <img data-snap="#myvideo@14" />
+
+  <script src='snaphash.js'></script>
+  <script src='index.js'></script>
+</body>
+</html>
