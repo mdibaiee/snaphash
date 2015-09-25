@@ -3,13 +3,27 @@
   var context = canvas.getContext('2d');
 
   var Snaphash = function(els) {
-    if (typeof els === 'string') els = document.querySelectorAll(els);
-    this.els = els.length ? els : [els];
+    if (!els) {
+      throw Error('You must provide an element/selector');
+    }
 
+    // selector provided
+    if (typeof els === 'string') {
+      els = document.querySelectorAll(els);
+    }
+
+    // single element provided
+    if (typeof els.length === 'undefined') {
+      els = [els];
+    }
+
+    // loop over elements
     for (var i = 0, len = els.length; i < len; i++) {
       var el = els[i];
+      // Let's find out target selector and time
       var src = parseSource(el.dataset.snap);
 
+      // Target video, clone it to avoid flickering
       var target = document.querySelector(src.selector).cloneNode();
 
       function listener() {
